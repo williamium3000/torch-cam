@@ -186,7 +186,7 @@ class _CAM:
                 weight = weight[(...,) + (None,) * missing_dims]
 
                 # Perform the weighted combination to get the CAM
-                cam = torch.nansum(weight * activation, dim=1)  # type: ignore[union-attr]
+                cam = torch.nansum(weight.to(activation.device) * activation, dim=1)  # type: ignore[union-attr]
 
                 if self._relu:
                     cam = F.relu(cam, inplace=True)
