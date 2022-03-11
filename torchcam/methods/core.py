@@ -32,6 +32,7 @@ class _CAM:
         target_layer: Optional[Union[Union[nn.Module, str], List[Union[nn.Module, str]]]] = None,
         input_shape: Tuple[int, ...] = (3, 224, 224),
         enable_hooks: bool = True,
+        relu: bool = False,
     ) -> None:
 
         # Obtain a mapping from module name to module instance for each layer in the model
@@ -74,7 +75,7 @@ class _CAM:
         # Enable hooks
         self._hooks_enabled = enable_hooks
         # Should ReLU be used before normalization
-        self._relu = False
+        self._relu = relu
         # Model output is used by the extractor
         self._score_used = False
 

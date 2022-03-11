@@ -77,7 +77,7 @@ class CAM(_CAM):
         else:
             raise TypeError("invalid argument type for `fc_layer`")
         # Softmax weight
-        self._fc_weights = self.submodule_dict[fc_name].weight.data
+        self._fc_weights = self.submodule_dict[fc_name].weight
         # squeeze to accomodate replacement by Conv1x1
         if self._fc_weights.ndim > 2:
             self._fc_weights = self._fc_weights.view(*self._fc_weights.shape[:2])
